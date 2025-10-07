@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "editTem";
+    Layout = "~/Views/Shared/_adminlayout.cshtml";
+}
+<button onclick="setEdit('yes')" class="btn btn-success">فعالسازی ویرایش</button>
+<button onclick="setEdit('no')" class="btn btn-danger">غیر فعالسازی ویرایش</button>
+<iframe id="frame" src="/Home/index" style="width:100%;height:100vh"></iframe>
+@section s{
+    <script>
+
+        function setEdit(a) {
+            $.post("/admin/setEdit", { mode: a })
+                .done(function (res) {
+                    if (res) {
+                        document.getElementById('frame').contentWindow.location.reload();
+                    }
+                });
+
+        }
+
+    </script>
+    }

@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="schoolModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_About">
+    <Key>
+      <PropertyRef Name="pkID" />
+    </Key>
+    <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Items" Type="nvarchar(max)" />
+    <Property Name="Image" Type="nvarchar" MaxLength="100" />
+    <Property Name="ImageAlt" Type="nvarchar" MaxLength="50" />
+    <Property Name="ImageTitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="ButtonCaption" Type="nvarchar" MaxLength="50" />
+    <Property Name="ButtonUrl" Type="nvarchar" MaxLength="50" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" />
+    <Property Name="Dis" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tbl_admins">
+    <Key>
+      <PropertyRef Name="pkID" />
+    </Key>
+    <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="family" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Banners">
+    <Key>
+      <PropertyRef Name="pkID" />
+    </Key>
+    <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="img" Type="nvarchar" MaxLength="50" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" />
+    <Property Name="Dis" Type="nvarchar" MaxLength="100" />
+    <Property Name="Url" Type="nvarchar" MaxLength="50" />
+    <Property Name="ButtonCaption" Type="nvarchar" MaxLength="50" />
+    <Property Name="imgAlt" Type="nvarchar" MaxLength="50" />
+    <Property Name="imgTitle" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_category">
+    <Key>
+      <PropertyRef Name="pkID" />
+    </Key>
+    <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_courses">
+    <Key>
+      <PropertyRef Name="pkID" />
+    </Key>
+    <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="fkCat" Type="int" Nullable="false" />
+    <Property Name="dis" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="img" Type="int" />
+    <Property Name="fkTeacherID" Type="int" />
+    <Property Name="status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_img">
+    <Key>
+      <PropertyRef Name="pkID" />
+    </Key>
+    <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="address" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="alt" Type="nvarchar" MaxLength="100" />
+    <Property Name="title" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tbl_Languages">
+    <Key>
+      <PropertyRef Name="pkID" />
+    </Key>
+    <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Lang" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Icon" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="status" Type="bit" />
+    <Property Name="direction" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_pages">
+    <Key>
+      <PropertyRef Name="pkID" />
+    </Key>
+    <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Dis" Type="nvarchar" MaxLength="100" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" />
+    <Property Name="keyword" Type="nvarchar" MaxLength="100" />
+    <Property Name="Action" Type="nvarchar" MaxLength="100" />
+    <Property Name="fkLangID" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_Posts">
+    <Key>
+      <PropertyRef Name="pkID" />
+    </Key>
+    <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Dis" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Contents" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="fkWriter" Type="int" Nullable="false" />
+    <Property Name="DateOfWrite" Type="date" Nullable="false" />
+    <Property Name="Image" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ImageTitle" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ImageAlt" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="KeyWords" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="fkLangID" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_student">
+    <Key>
+      <PropertyRef Name="pkID" />
+    </Key>
+    <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="family" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tbl_teachers">
+    <Key>
+      <PropertyRef Name="pkID" />
+    </Key>
+    <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Family" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="fkImg" Type="int" />
+  </EntityType>
+  <EntityType Name="tble_events">
+    <Key>
+      <PropertyRef Name="pkID" />
+    </Key>
+    <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="dis" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view '23943_school.23943.View_teachers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="View_teachers">
+    <Key>
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Family" />
+      <PropertyRef Name="pkID" />
+    </Key>
+    <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Family" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="fkImg" Type="int" />
+    <Property Name="pkID" Type="int" Nullable="false" />
+    <Property Name="address" Type="nvarchar" MaxLength="100" />
+    <Property Name="alt" Type="nvarchar" MaxLength="100" />
+    <Property Name="title" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view '23943_school.dbo.View_courses' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="View_courses">
+    <Key>
+      <PropertyRef Name="pkID" />
+      <PropertyRef Name="title" />
+      <PropertyRef Name="fkCat" />
+      <PropertyRef Name="dis" />
+      <PropertyRef Name="status" />
+    </Key>
+    <Property Name="pkID" Type="int" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="fkCat" Type="int" Nullable="false" />
+    <Property Name="dis" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="img" Type="int" />
+    <Property Name="fkTeacherID" Type="int" />
+    <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="address" Type="nvarchar" MaxLength="100" />
+    <Property Name="alt" Type="nvarchar" MaxLength="100" />
+    <Property Name="imgTitle" Type="nvarchar" MaxLength="100" />
+    <Property Name="catTitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" MaxLength="20" />
+    <Property Name="Family" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <Association Name="FK_tbl_courses_tbl_category">
+    <End Role="tbl_category" Type="Self.tbl_category" Multiplicity="1" />
+    <End Role="tbl_courses" Type="Self.tbl_courses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_category">
+        <PropertyRef Name="pkID" />
+      </Principal>
+      <Dependent Role="tbl_courses">
+        <PropertyRef Name="fkCat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_courses_tbl_img">
+    <End Role="tbl_img" Type="Self.tbl_img" Multiplicity="0..1" />
+    <End Role="tbl_courses" Type="Self.tbl_courses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_img">
+        <PropertyRef Name="pkID" />
+      </Principal>
+      <Dependent Role="tbl_courses">
+        <PropertyRef Name="img" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_courses_tbl_teachers">
+    <End Role="tbl_teachers" Type="Self.tbl_teachers" Multiplicity="0..1" />
+    <End Role="tbl_courses" Type="Self.tbl_courses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_teachers">
+        <PropertyRef Name="pkID" />
+      </Principal>
+      <Dependent Role="tbl_courses">
+        <PropertyRef Name="fkTeacherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_pages_tbl_Languages">
+    <End Role="tbl_Languages" Type="Self.tbl_Languages" Multiplicity="0..1" />
+    <End Role="tbl_pages" Type="Self.tbl_pages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Languages">
+        <PropertyRef Name="pkID" />
+      </Principal>
+      <Dependent Role="tbl_pages">
+        <PropertyRef Name="fkLangID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Posts_tbl_teachers">
+    <End Role="tbl_Languages" Type="Self.tbl_Languages" Multiplicity="0..1" />
+    <End Role="tbl_Posts" Type="Self.tbl_Posts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Languages">
+        <PropertyRef Name="pkID" />
+      </Principal>
+      <Dependent Role="tbl_Posts">
+        <PropertyRef Name="fkLangID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_teachers_tbl_img">
+    <End Role="tbl_img" Type="Self.tbl_img" Multiplicity="0..1" />
+    <End Role="tbl_teachers" Type="Self.tbl_teachers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_img">
+        <PropertyRef Name="pkID" />
+      </Principal>
+      <Dependent Role="tbl_teachers">
+        <PropertyRef Name="fkImg" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="schoolModelStoreContainer">
+    <EntitySet Name="tbl_About" EntityType="Self.tbl_About" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_admins" EntityType="Self.tbl_admins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Banners" EntityType="Self.tbl_Banners" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_category" EntityType="Self.tbl_category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_courses" EntityType="Self.tbl_courses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_img" EntityType="Self.tbl_img" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Languages" EntityType="Self.tbl_Languages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_pages" EntityType="Self.tbl_pages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Posts" EntityType="Self.tbl_Posts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_student" EntityType="Self.tbl_student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_teachers" EntityType="Self.tbl_teachers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tble_events" EntityType="Self.tble_events" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="View_teachers" EntityType="Self.View_teachers" store:Type="Views" store:Schema="23943">
+      <DefiningQuery>SELECT 
+    [View_teachers].[Name] AS [Name], 
+    [View_teachers].[Family] AS [Family], 
+    [View_teachers].[fkImg] AS [fkImg], 
+    [View_teachers].[pkID] AS [pkID], 
+    [View_teachers].[address] AS [address], 
+    [View_teachers].[alt] AS [alt], 
+    [View_teachers].[title] AS [title]
+    FROM [23943].[View_teachers] AS [View_teachers]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="View_courses" EntityType="Self.View_courses" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [View_courses].[pkID] AS [pkID], 
+    [View_courses].[title] AS [title], 
+    [View_courses].[fkCat] AS [fkCat], 
+    [View_courses].[dis] AS [dis], 
+    [View_courses].[img] AS [img], 
+    [View_courses].[fkTeacherID] AS [fkTeacherID], 
+    [View_courses].[status] AS [status], 
+    [View_courses].[address] AS [address], 
+    [View_courses].[alt] AS [alt], 
+    [View_courses].[imgTitle] AS [imgTitle], 
+    [View_courses].[catTitle] AS [catTitle], 
+    [View_courses].[Name] AS [Name], 
+    [View_courses].[Family] AS [Family]
+    FROM [dbo].[View_courses] AS [View_courses]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_tbl_courses_tbl_category" Association="Self.FK_tbl_courses_tbl_category">
+      <End Role="tbl_category" EntitySet="tbl_category" />
+      <End Role="tbl_courses" EntitySet="tbl_courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_courses_tbl_img" Association="Self.FK_tbl_courses_tbl_img">
+      <End Role="tbl_img" EntitySet="tbl_img" />
+      <End Role="tbl_courses" EntitySet="tbl_courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_courses_tbl_teachers" Association="Self.FK_tbl_courses_tbl_teachers">
+      <End Role="tbl_teachers" EntitySet="tbl_teachers" />
+      <End Role="tbl_courses" EntitySet="tbl_courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_pages_tbl_Languages" Association="Self.FK_tbl_pages_tbl_Languages">
+      <End Role="tbl_Languages" EntitySet="tbl_Languages" />
+      <End Role="tbl_pages" EntitySet="tbl_pages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Posts_tbl_teachers" Association="Self.FK_tbl_Posts_tbl_teachers">
+      <End Role="tbl_Languages" EntitySet="tbl_Languages" />
+      <End Role="tbl_Posts" EntitySet="tbl_Posts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_teachers_tbl_img" Association="Self.FK_tbl_teachers_tbl_img">
+      <End Role="tbl_img" EntitySet="tbl_img" />
+      <End Role="tbl_teachers" EntitySet="tbl_teachers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

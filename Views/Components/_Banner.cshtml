@@ -1,0 +1,15 @@
+﻿@using mentor.Models
+@model tbl_Banners
+
+@{
+    Model.Title = Model.Title.Replace("\n", "<br>");
+}
+<img id="Banners-@Model.pkID-img" src="~/assets/img/Banners/@Model.img" alt="@Model.imgAlt" title="@Model.imgTitle" data-aos="fade-in" class="aos-init aos-animate editable" name="عکس بنر">
+
+<div class="container">
+    <h2 id="Banners-@Model.pkID-Title" data-aos="fade-up" data-aos-delay="100" class="aos-init aos-animate editable" name="عنوان بنر">@Html.Raw(Model.Title)</h2>
+    <p id="Banners-@Model.pkID-Dis" data-aos="fade-up" data-aos-delay="200" class="aos-init aos-animate editable" name="متن بنر">@Model.Dis</p>
+    <div  class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
+       <a  id="Banners-@Model.pkID-.ButtonCaption" href="@Model.Url" class="btn-get-started editable" name="متن دکمه">@Model.ButtonCaption</a>
+    </div>
+</div>

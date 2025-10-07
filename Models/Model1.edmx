@@ -1,0 +1,911 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="schoolModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_About">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Items" Type="nvarchar(max)" />
+          <Property Name="Image" Type="nvarchar" MaxLength="100" />
+          <Property Name="ImageAlt" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImageTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="ButtonCaption" Type="nvarchar" MaxLength="50" />
+          <Property Name="ButtonUrl" Type="nvarchar" MaxLength="50" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Dis" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tbl_admins">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="family" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Banners">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="img" Type="nvarchar" MaxLength="50" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="Dis" Type="nvarchar" MaxLength="100" />
+          <Property Name="Url" Type="nvarchar" MaxLength="50" />
+          <Property Name="ButtonCaption" Type="nvarchar" MaxLength="50" />
+          <Property Name="imgAlt" Type="nvarchar" MaxLength="50" />
+          <Property Name="imgTitle" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_blog">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Dis" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Contents" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="fkWriter" Type="int" Nullable="false" />
+          <Property Name="DateOfWrite" Type="datetime" Nullable="false" />
+          <Property Name="Image" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ImageTitle" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ImageAlt" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="KeyWords" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="fkLangID" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_category">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_courses">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="fkCat" Type="int" Nullable="false" />
+          <Property Name="dis" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="img" Type="int" />
+          <Property Name="fkTeacherID" Type="int" />
+          <Property Name="status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_img">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="address" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="alt" Type="nvarchar" MaxLength="100" />
+          <Property Name="title" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tbl_Languages">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Lang" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Icon" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="status" Type="bit" />
+          <Property Name="direction" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_pages">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Dis" Type="nvarchar" MaxLength="100" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="keyword" Type="nvarchar" MaxLength="100" />
+          <Property Name="Action" Type="nvarchar" MaxLength="100" />
+          <Property Name="fkLangID" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_Posts">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Dis" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Contents" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="fkWriter" Type="int" Nullable="false" />
+          <Property Name="DateOfWrite" Type="datetime" Nullable="false" />
+          <Property Name="Image" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ImageTitle" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ImageAlt" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="KeyWords" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="fkLangID" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_student">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="family" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="phone" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tbl_teachers">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Family" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="fkImg" Type="int" />
+        </EntityType>
+        <EntityType Name="View_courses">
+          <Key>
+            <PropertyRef Name="pkID" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="fkCat" />
+            <PropertyRef Name="dis" />
+            <PropertyRef Name="status" />
+          </Key>
+          <Property Name="pkID" Type="int" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="fkCat" Type="int" Nullable="false" />
+          <Property Name="dis" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="img" Type="int" />
+          <Property Name="fkTeacherID" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" />
+          <Property Name="Family" Type="nvarchar" MaxLength="20" />
+          <Property Name="catTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="address" Type="nvarchar" MaxLength="100" />
+          <Property Name="alt" Type="nvarchar" MaxLength="100" />
+          <Property Name="imgTitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_teachers">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Family" />
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Family" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="fkImg" Type="int" />
+          <Property Name="pkID" Type="int" Nullable="false" />
+          <Property Name="address" Type="nvarchar" MaxLength="100" />
+          <Property Name="alt" Type="nvarchar" MaxLength="100" />
+          <Property Name="title" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_tbl_courses_tbl_category">
+          <End Role="tbl_category" Type="Self.tbl_category" Multiplicity="1" />
+          <End Role="tbl_courses" Type="Self.tbl_courses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_category">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl_courses">
+              <PropertyRef Name="fkCat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_courses_tbl_img">
+          <End Role="tbl_img" Type="Self.tbl_img" Multiplicity="0..1" />
+          <End Role="tbl_courses" Type="Self.tbl_courses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_img">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl_courses">
+              <PropertyRef Name="img" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_courses_tbl_teachers">
+          <End Role="tbl_teachers" Type="Self.tbl_teachers" Multiplicity="0..1" />
+          <End Role="tbl_courses" Type="Self.tbl_courses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_teachers">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl_courses">
+              <PropertyRef Name="fkTeacherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_pages_tbl_Languages">
+          <End Role="tbl_Languages" Type="Self.tbl_Languages" Multiplicity="0..1" />
+          <End Role="tbl_pages" Type="Self.tbl_pages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Languages">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl_pages">
+              <PropertyRef Name="fkLangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Posts_tbl_Languages">
+          <End Role="tbl_Languages" Type="Self.tbl_Languages" Multiplicity="0..1" />
+          <End Role="tbl_Posts" Type="Self.tbl_Posts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Languages">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl_Posts">
+              <PropertyRef Name="fkLangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Posts_tbl_teachers">
+          <End Role="tbl_teachers" Type="Self.tbl_teachers" Multiplicity="1" />
+          <End Role="tbl_Posts" Type="Self.tbl_Posts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_teachers">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl_Posts">
+              <PropertyRef Name="fkWriter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_teachers_tbl_img">
+          <End Role="tbl_img" Type="Self.tbl_img" Multiplicity="0..1" />
+          <End Role="tbl_teachers" Type="Self.tbl_teachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_img">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl_teachers">
+              <PropertyRef Name="fkImg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tble_events_tbl_Languages">
+          <End Role="tbl_Languages" Type="Self.tbl_Languages" Multiplicity="0..1" />
+          <End Role="tbl_blog" Type="Self.tbl_blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Languages">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl_blog">
+              <PropertyRef Name="fkLangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tble_events_tble_events">
+          <End Role="tbl_teachers" Type="Self.tbl_teachers" Multiplicity="1" />
+          <End Role="tbl_blog" Type="Self.tbl_blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_teachers">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl_blog">
+              <PropertyRef Name="fkWriter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="schoolModelStoreContainer">
+          <EntitySet Name="tbl_About" EntityType="Self.tbl_About" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_admins" EntityType="Self.tbl_admins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Banners" EntityType="Self.tbl_Banners" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_blog" EntityType="Self.tbl_blog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_category" EntityType="Self.tbl_category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_courses" EntityType="Self.tbl_courses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_img" EntityType="Self.tbl_img" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Languages" EntityType="Self.tbl_Languages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_pages" EntityType="Self.tbl_pages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Posts" EntityType="Self.tbl_Posts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_student" EntityType="Self.tbl_student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_teachers" EntityType="Self.tbl_teachers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_courses" EntityType="Self.View_courses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_teachers" EntityType="Self.View_teachers" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tbl_courses_tbl_category" Association="Self.FK_tbl_courses_tbl_category">
+            <End Role="tbl_category" EntitySet="tbl_category" />
+            <End Role="tbl_courses" EntitySet="tbl_courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_courses_tbl_img" Association="Self.FK_tbl_courses_tbl_img">
+            <End Role="tbl_img" EntitySet="tbl_img" />
+            <End Role="tbl_courses" EntitySet="tbl_courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_courses_tbl_teachers" Association="Self.FK_tbl_courses_tbl_teachers">
+            <End Role="tbl_teachers" EntitySet="tbl_teachers" />
+            <End Role="tbl_courses" EntitySet="tbl_courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_pages_tbl_Languages" Association="Self.FK_tbl_pages_tbl_Languages">
+            <End Role="tbl_Languages" EntitySet="tbl_Languages" />
+            <End Role="tbl_pages" EntitySet="tbl_pages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Posts_tbl_Languages" Association="Self.FK_tbl_Posts_tbl_Languages">
+            <End Role="tbl_Languages" EntitySet="tbl_Languages" />
+            <End Role="tbl_Posts" EntitySet="tbl_Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Posts_tbl_teachers" Association="Self.FK_tbl_Posts_tbl_teachers">
+            <End Role="tbl_teachers" EntitySet="tbl_teachers" />
+            <End Role="tbl_Posts" EntitySet="tbl_Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_teachers_tbl_img" Association="Self.FK_tbl_teachers_tbl_img">
+            <End Role="tbl_img" EntitySet="tbl_img" />
+            <End Role="tbl_teachers" EntitySet="tbl_teachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tble_events_tbl_Languages" Association="Self.FK_tble_events_tbl_Languages">
+            <End Role="tbl_Languages" EntitySet="tbl_Languages" />
+            <End Role="tbl_blog" EntitySet="tbl_blog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tble_events_tble_events" Association="Self.FK_tble_events_tble_events">
+            <End Role="tbl_teachers" EntitySet="tbl_teachers" />
+            <End Role="tbl_blog" EntitySet="tbl_blog" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="schoolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_student">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="family" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_teachers">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Family" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbl_courses" Relationship="schoolModel.FK_tbl_courses_tbl_teachers" FromRole="tbl_teachers" ToRole="tbl_courses" />
+          <Property Name="fkImg" Type="Int32" />
+          <NavigationProperty Name="tbl_img" Relationship="schoolModel.FK_tbl_teachers_tbl_img" FromRole="tbl_teachers" ToRole="tbl_img" />
+          <NavigationProperty Name="tbl_Posts" Relationship="schoolModel.FK_tbl_Posts_tbl_teachers" FromRole="tbl_teachers" ToRole="tbl_Posts" />
+          <NavigationProperty Name="tbl_blog" Relationship="schoolModel.FK_tble_events_tble_events" FromRole="tbl_teachers" ToRole="tbl_blog" />
+        </EntityType>
+        <EntityContainer Name="sdb" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_student" EntityType="Self.tbl_student" />
+          <EntitySet Name="tbl_teachers" EntityType="Self.tbl_teachers" />
+          <EntitySet Name="tbl_admins" EntityType="schoolModel.tbl_admins" />
+          <EntitySet Name="tbl_category" EntityType="schoolModel.tbl_category" />
+          <EntitySet Name="tbl_img" EntityType="schoolModel.tbl_img" />
+          <EntitySet Name="tbl_courses" EntityType="schoolModel.tbl_courses" />
+          <AssociationSet Name="FK_tbl_courses_tbl_category" Association="schoolModel.FK_tbl_courses_tbl_category">
+            <End Role="tbl_category" EntitySet="tbl_category" />
+            <End Role="tbl_courses" EntitySet="tbl_courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_courses_tbl_img" Association="schoolModel.FK_tbl_courses_tbl_img">
+            <End Role="tbl_img" EntitySet="tbl_img" />
+            <End Role="tbl_courses" EntitySet="tbl_courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_courses_tbl_teachers" Association="schoolModel.FK_tbl_courses_tbl_teachers">
+            <End Role="tbl_teachers" EntitySet="tbl_teachers" />
+            <End Role="tbl_courses" EntitySet="tbl_courses" />
+          </AssociationSet>
+          <EntitySet Name="View_courses" EntityType="schoolModel.View_courses" />
+          <AssociationSet Name="FK_tbl_teachers_tbl_img" Association="schoolModel.FK_tbl_teachers_tbl_img">
+            <End Role="tbl_img" EntitySet="tbl_img" />
+            <End Role="tbl_teachers" EntitySet="tbl_teachers" />
+          </AssociationSet>
+          <EntitySet Name="View_teachers" EntityType="schoolModel.View_teachers" />
+          <EntitySet Name="tbl_Posts" EntityType="schoolModel.tbl_Posts" />
+          <AssociationSet Name="FK_tbl_Posts_tbl_teachers" Association="schoolModel.FK_tbl_Posts_tbl_teachers">
+            <End Role="tbl_teachers" EntitySet="tbl_teachers" />
+            <End Role="tbl_Posts" EntitySet="tbl_Posts" />
+          </AssociationSet>
+          <EntitySet Name="tbl_Banners" EntityType="schoolModel.tbl_Banners" />
+          <EntitySet Name="tbl_About" EntityType="schoolModel.tbl_About" />
+          <EntitySet Name="tbl_pages" EntityType="schoolModel.tbl_pages" />
+          <EntitySet Name="tbl_Languages" EntityType="schoolModel.tbl_Languages" />
+          <AssociationSet Name="FK_tbl_pages_tbl_Languages" Association="schoolModel.FK_tbl_pages_tbl_Languages">
+            <End Role="tbl_Languages" EntitySet="tbl_Languages" />
+            <End Role="tbl_pages" EntitySet="tbl_pages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Posts_tbl_teachers1" Association="schoolModel.FK_tbl_Posts_tbl_teachers1">
+            <End Role="tbl_Languages" EntitySet="tbl_Languages" />
+            <End Role="tbl_Posts" EntitySet="tbl_Posts" />
+          </AssociationSet>
+          <EntitySet Name="tbl_blog" EntityType="schoolModel.tbl_blog" />
+          <AssociationSet Name="FK_tble_events_tbl_Languages" Association="schoolModel.FK_tble_events_tbl_Languages">
+            <End Role="tbl_Languages" EntitySet="tbl_Languages" />
+            <End Role="tbl_blog" EntitySet="tbl_blog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tble_events_tble_events" Association="schoolModel.FK_tble_events_tble_events">
+            <End Role="tbl_teachers" EntitySet="tbl_teachers" />
+            <End Role="tbl_blog" EntitySet="tbl_blog" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tbl_admins">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="family" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_category">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_courses" Relationship="schoolModel.FK_tbl_courses_tbl_category" FromRole="tbl_category" ToRole="tbl_courses" />
+        </EntityType>
+        <EntityType Name="tbl_img">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="address" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="alt" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_courses" Relationship="schoolModel.FK_tbl_courses_tbl_img" FromRole="tbl_img" ToRole="tbl_courses" />
+          <NavigationProperty Name="tbl_teachers" Relationship="schoolModel.FK_tbl_teachers_tbl_img" FromRole="tbl_img" ToRole="tbl_teachers" />
+        </EntityType>
+        <EntityType Name="tbl_courses">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fkCat" Type="Int32" Nullable="false" />
+          <Property Name="dis" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="img" Type="Int32" />
+          <Property Name="fkTeacherID" Type="Int32" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tbl_category" Relationship="schoolModel.FK_tbl_courses_tbl_category" FromRole="tbl_courses" ToRole="tbl_category" />
+          <NavigationProperty Name="tbl_img" Relationship="schoolModel.FK_tbl_courses_tbl_img" FromRole="tbl_courses" ToRole="tbl_img" />
+          <NavigationProperty Name="tbl_teachers" Relationship="schoolModel.FK_tbl_courses_tbl_teachers" FromRole="tbl_courses" ToRole="tbl_teachers" />
+        </EntityType>
+        <Association Name="FK_tbl_courses_tbl_category">
+          <End Type="schoolModel.tbl_category" Role="tbl_category" Multiplicity="1" />
+          <End Type="schoolModel.tbl_courses" Role="tbl_courses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_category">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl_courses">
+              <PropertyRef Name="fkCat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_courses_tbl_img">
+          <End Type="schoolModel.tbl_img" Role="tbl_img" Multiplicity="0..1" />
+          <End Type="schoolModel.tbl_courses" Role="tbl_courses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_img">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl_courses">
+              <PropertyRef Name="img" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_courses_tbl_teachers">
+          <End Type="schoolModel.tbl_teachers" Role="tbl_teachers" Multiplicity="0..1" />
+          <End Type="schoolModel.tbl_courses" Role="tbl_courses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_teachers">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl_courses">
+              <PropertyRef Name="fkTeacherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="View_courses">
+          <Key>
+            <PropertyRef Name="pkID" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="fkCat" />
+            <PropertyRef Name="dis" />
+            <PropertyRef Name="status" />
+          </Key>
+          <Property Name="pkID" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fkCat" Type="Int32" Nullable="false" />
+          <Property Name="dis" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="img" Type="Int32" />
+          <Property Name="fkTeacherID" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Family" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="catTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="alt" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="imgTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tbl_teachers_tbl_img">
+          <End Type="schoolModel.tbl_img" Role="tbl_img" Multiplicity="0..1" />
+          <End Type="schoolModel.tbl_teachers" Role="tbl_teachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_img">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl_teachers">
+              <PropertyRef Name="fkImg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="View_teachers">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Family" />
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Family" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="fkImg" Type="Int32" />
+          <Property Name="pkID" Type="Int32" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="alt" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_Posts">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Dis" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Contents" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fkWriter" Type="Int32" Nullable="false" />
+          <Property Name="DateOfWrite" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Image" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImageTitle" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ImageAlt" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="KeyWords" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_teachers" Relationship="schoolModel.FK_tbl_Posts_tbl_teachers" FromRole="tbl_Posts" ToRole="tbl_teachers" />
+          <Property Name="fkLangID" Type="Int32" />
+          <NavigationProperty Name="tbl_Languages" Relationship="schoolModel.FK_tbl_Posts_tbl_teachers1" FromRole="tbl_Posts" ToRole="tbl_Languages" />
+        </EntityType>
+        <Association Name="FK_tbl_Posts_tbl_teachers">
+          <End Type="schoolModel.tbl_teachers" Role="tbl_teachers" Multiplicity="1" />
+          <End Type="schoolModel.tbl_Posts" Role="tbl_Posts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_teachers">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl_Posts">
+              <PropertyRef Name="fkWriter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tbl_Banners">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Dis" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ButtonCaption" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="imgAlt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="imgTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_About">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Items" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ImageAlt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImageTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ButtonCaption" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ButtonUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Dis" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_pages">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Dis" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="keyword" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Action" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="fkLangID" Type="Int32" />
+          <NavigationProperty Name="tbl_Languages" Relationship="schoolModel.FK_tbl_pages_tbl_Languages" FromRole="tbl_pages" ToRole="tbl_Languages" />
+        </EntityType>
+        <EntityType Name="tbl_Languages">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Lang" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Icon" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="Boolean" />
+          <Property Name="direction" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_pages" Relationship="schoolModel.FK_tbl_pages_tbl_Languages" FromRole="tbl_Languages" ToRole="tbl_pages" />
+          <NavigationProperty Name="tbl_Posts" Relationship="schoolModel.FK_tbl_Posts_tbl_teachers1" FromRole="tbl_Languages" ToRole="tbl_Posts" />
+          <NavigationProperty Name="tbl_blog" Relationship="schoolModel.FK_tble_events_tbl_Languages" FromRole="tbl_Languages" ToRole="tbl_blog" />
+        </EntityType>
+        <Association Name="FK_tbl_pages_tbl_Languages">
+          <End Type="schoolModel.tbl_Languages" Role="tbl_Languages" Multiplicity="0..1" />
+          <End Type="schoolModel.tbl_pages" Role="tbl_pages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Languages">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl_pages">
+              <PropertyRef Name="fkLangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Posts_tbl_teachers1">
+          <End Type="schoolModel.tbl_Languages" Role="tbl_Languages" Multiplicity="0..1" />
+          <End Type="schoolModel.tbl_Posts" Role="tbl_Posts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Languages">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl_Posts">
+              <PropertyRef Name="fkLangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tbl_blog">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Dis" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Contents" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fkWriter" Type="Int32" Nullable="false" />
+          <Property Name="DateOfWrite" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Image" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImageTitle" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ImageAlt" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="KeyWords" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="fkLangID" Type="Int32" />
+          <NavigationProperty Name="tbl_Languages" Relationship="schoolModel.FK_tble_events_tbl_Languages" FromRole="tbl_blog" ToRole="tbl_Languages" />
+          <NavigationProperty Name="tbl_teachers" Relationship="schoolModel.FK_tble_events_tble_events" FromRole="tbl_blog" ToRole="tbl_teachers" />
+        </EntityType>
+        <Association Name="FK_tble_events_tbl_Languages">
+          <End Type="schoolModel.tbl_Languages" Role="tbl_Languages" Multiplicity="0..1" />
+          <End Type="schoolModel.tbl_blog" Role="tbl_blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Languages">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl_blog">
+              <PropertyRef Name="fkLangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tble_events_tble_events">
+          <End Type="schoolModel.tbl_teachers" Role="tbl_teachers" Multiplicity="1" />
+          <End Type="schoolModel.tbl_blog" Role="tbl_blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_teachers">
+              <PropertyRef Name="pkID" />
+            </Principal>
+            <Dependent Role="tbl_blog">
+              <PropertyRef Name="fkWriter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="schoolModelStoreContainer" CdmEntityContainer="sdb">
+    <EntitySetMapping Name="tbl_student">
+      <EntityTypeMapping TypeName="IsTypeOf(schoolModel.tbl_student)">
+        <MappingFragment StoreEntitySet="tbl_student">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="family" ColumnName="family" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_teachers">
+      <EntityTypeMapping TypeName="IsTypeOf(schoolModel.tbl_teachers)">
+        <MappingFragment StoreEntitySet="tbl_teachers">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Family" ColumnName="Family" />
+          <ScalarProperty Name="fkImg" ColumnName="fkImg" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_admins">
+      <EntityTypeMapping TypeName="IsTypeOf(schoolModel.tbl_admins)">
+        <MappingFragment StoreEntitySet="tbl_admins">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="family" ColumnName="family" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_category">
+      <EntityTypeMapping TypeName="IsTypeOf(schoolModel.tbl_category)">
+        <MappingFragment StoreEntitySet="tbl_category">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="title" ColumnName="title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_img">
+      <EntityTypeMapping TypeName="IsTypeOf(schoolModel.tbl_img)">
+        <MappingFragment StoreEntitySet="tbl_img">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="alt" ColumnName="alt" />
+          <ScalarProperty Name="title" ColumnName="title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_courses">
+      <EntityTypeMapping TypeName="IsTypeOf(schoolModel.tbl_courses)">
+        <MappingFragment StoreEntitySet="tbl_courses">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="fkCat" ColumnName="fkCat" />
+          <ScalarProperty Name="dis" ColumnName="dis" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="fkTeacherID" ColumnName="fkTeacherID" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_courses">
+      <EntityTypeMapping TypeName="IsTypeOf(schoolModel.View_courses)">
+        <MappingFragment StoreEntitySet="View_courses">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="fkCat" ColumnName="fkCat" />
+          <ScalarProperty Name="dis" ColumnName="dis" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="fkTeacherID" ColumnName="fkTeacherID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Family" ColumnName="Family" />
+          <ScalarProperty Name="catTitle" ColumnName="catTitle" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="alt" ColumnName="alt" />
+          <ScalarProperty Name="imgTitle" ColumnName="imgTitle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_teachers">
+      <EntityTypeMapping TypeName="IsTypeOf(schoolModel.View_teachers)">
+        <MappingFragment StoreEntitySet="View_teachers">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Family" ColumnName="Family" />
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="fkImg" ColumnName="fkImg" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="alt" ColumnName="alt" />
+          <ScalarProperty Name="title" ColumnName="title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Posts">
+      <EntityTypeMapping TypeName="IsTypeOf(schoolModel.tbl_Posts)">
+        <MappingFragment StoreEntitySet="tbl_Posts">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Dis" ColumnName="Dis" />
+          <ScalarProperty Name="Contents" ColumnName="Contents" />
+          <ScalarProperty Name="fkWriter" ColumnName="fkWriter" />
+          <ScalarProperty Name="DateOfWrite" ColumnName="DateOfWrite" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="ImageTitle" ColumnName="ImageTitle" />
+          <ScalarProperty Name="ImageAlt" ColumnName="ImageAlt" />
+          <ScalarProperty Name="KeyWords" ColumnName="KeyWords" />
+          <ScalarProperty Name="fkLangID" ColumnName="fkLangID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Banners">
+      <EntityTypeMapping TypeName="IsTypeOf(schoolModel.tbl_Banners)">
+        <MappingFragment StoreEntitySet="tbl_Banners">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Dis" ColumnName="Dis" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="ButtonCaption" ColumnName="ButtonCaption" />
+          <ScalarProperty Name="imgAlt" ColumnName="imgAlt" />
+          <ScalarProperty Name="imgTitle" ColumnName="imgTitle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_About">
+      <EntityTypeMapping TypeName="IsTypeOf(schoolModel.tbl_About)">
+        <MappingFragment StoreEntitySet="tbl_About">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="Items" ColumnName="Items" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="ImageAlt" ColumnName="ImageAlt" />
+          <ScalarProperty Name="ImageTitle" ColumnName="ImageTitle" />
+          <ScalarProperty Name="ButtonCaption" ColumnName="ButtonCaption" />
+          <ScalarProperty Name="ButtonUrl" ColumnName="ButtonUrl" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Dis" ColumnName="Dis" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_pages">
+      <EntityTypeMapping TypeName="IsTypeOf(schoolModel.tbl_pages)">
+        <MappingFragment StoreEntitySet="tbl_pages">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Dis" ColumnName="Dis" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="keyword" ColumnName="keyword" />
+          <ScalarProperty Name="Action" ColumnName="Action" />
+          <ScalarProperty Name="fkLangID" ColumnName="fkLangID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Languages">
+      <EntityTypeMapping TypeName="IsTypeOf(schoolModel.tbl_Languages)">
+        <MappingFragment StoreEntitySet="tbl_Languages">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="Lang" ColumnName="Lang" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="direction" ColumnName="direction" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+          <EntitySetMapping Name="tbl_blog">
+            <EntityTypeMapping TypeName="schoolModel.tbl_blog">
+              <MappingFragment StoreEntitySet="tbl_blog">
+                <ScalarProperty Name="fkLangID" ColumnName="fkLangID" />
+                <ScalarProperty Name="KeyWords" ColumnName="KeyWords" />
+                <ScalarProperty Name="ImageAlt" ColumnName="ImageAlt" />
+                <ScalarProperty Name="ImageTitle" ColumnName="ImageTitle" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="DateOfWrite" ColumnName="DateOfWrite" />
+                <ScalarProperty Name="fkWriter" ColumnName="fkWriter" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="Dis" ColumnName="Dis" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="pkID" ColumnName="pkID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

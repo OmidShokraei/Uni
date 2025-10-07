@@ -1,0 +1,39 @@
+﻿@using mentor.Models
+@model tbl_About
+    @{ 
+        string[] items = Model.Items.Split('\n');
+    }
+<div class="container">
+
+    <div class="row gy-4">
+
+        <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="100">
+            <img id="About-@Model.pkID-Image" src="~/assets/img/about/@Model.Image" class="img-fluid editable" name="عکس" alt="@Model.ImageAlt" title="@Model.ImageTitle">
+        </div>
+
+        <div class="col-lg-6 order-2 order-lg-1 content" data-aos="fade-up" data-aos-delay="200">
+            <h3 id="About-@Model.pkID-Title" class="editable" name="تیتر">@Model.Title</h3>
+            <p id="About-@Model.pkID-Dis" class="fst-italic editable" name="متن">
+                @Model.Dis
+            </p>
+            <ul id="About-@Model.pkID-Items" class="editable" name="ویژگیها">
+                @{
+                    foreach (string item in items)
+                    {
+                        <li><i class="bi bi-check-circle"></i> <span>@item</span></li>
+                    }
+                }
+            </ul>
+            @{
+                if (Model.ButtonCaption != null)
+                {
+                    <a id="About-@Model.pkID-ButtonCaption" href="@Model.ButtonUrl" class="read-more editable" name="متن دکمه"><span>@Model.ButtonCaption</span><i class="bi bi-arrow-right"></i></a>
+                }
+            }
+
+        </div>
+
+    </div>
+
+</div>
+
