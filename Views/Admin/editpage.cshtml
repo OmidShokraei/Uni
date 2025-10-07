@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "editpage";
+    Layout = "~/Views/Shared/_adminlayout.cshtml";
+}
+@using mentor.Models
+@model tbl_pages
+<div class="row">
+    <div class="card">
+        <div class="card-body">
+           
+
+            <!-- Vertical Form -->
+            <form class="row g-3" method="post" enctype="multipart/form-data" action="@Url.Action("editPage", "admin")">
+                <div class="col-12" style="display:none">
+                    <label for="pkID" class="form-label">شمارنده</label>
+                    <input type="number" class="form-control" name="pkID" value="@Model.pkID">
+                </div>
+                <div class="col-12">
+                    <label for="Name" class="form-label">اسم صفحه</label>
+                    <input type="text" class="form-control" name="Name" value="@Model.Name">
+                </div>
+                <div class="col-12">
+                    <label for="Title" class="form-label">عنوان</label>
+                    <input type="text" class="form-control" name="Title" value="@Model.Title">
+                </div>
+                <div class="col-12">
+                    <label for="Dis" class="form-label">محتوا</label>
+                    <textarea class="form-control" name="Dis">@Model.Dis</textarea>
+                </div>
+
+
+                <div class="col-12">
+                    <label for="Keywords" class="form-label">کلمات کلیدی</label>
+                    <input type="text" class="form-control" name="Keywords" value="@Model.keyword">
+                </div>
+                
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">ذخیره</button>
+                    <a type="reset" class="btn btn-secondary" href="~/admin/pages">بازگشت</a>
+                </div>
+
+            </form><!-- Vertical Form -->
+
+        </div>
+    </div>
+
+</div>
+

@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="schoolModelStoreContainer" CdmEntityContainer="sdb">
+    <EntitySetMapping Name="tbl_student">
+      <EntityTypeMapping TypeName="IsTypeOf(schoolModel.tbl_student)">
+        <MappingFragment StoreEntitySet="tbl_student">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="family" ColumnName="family" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_teachers">
+      <EntityTypeMapping TypeName="IsTypeOf(schoolModel.tbl_teachers)">
+        <MappingFragment StoreEntitySet="tbl_teachers">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Family" ColumnName="Family" />
+          <ScalarProperty Name="fkImg" ColumnName="fkImg" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_admins">
+      <EntityTypeMapping TypeName="IsTypeOf(schoolModel.tbl_admins)">
+        <MappingFragment StoreEntitySet="tbl_admins">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="family" ColumnName="family" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_category">
+      <EntityTypeMapping TypeName="IsTypeOf(schoolModel.tbl_category)">
+        <MappingFragment StoreEntitySet="tbl_category">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="title" ColumnName="title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_img">
+      <EntityTypeMapping TypeName="IsTypeOf(schoolModel.tbl_img)">
+        <MappingFragment StoreEntitySet="tbl_img">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="alt" ColumnName="alt" />
+          <ScalarProperty Name="title" ColumnName="title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_courses">
+      <EntityTypeMapping TypeName="IsTypeOf(schoolModel.tbl_courses)">
+        <MappingFragment StoreEntitySet="tbl_courses">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="fkCat" ColumnName="fkCat" />
+          <ScalarProperty Name="dis" ColumnName="dis" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="fkTeacherID" ColumnName="fkTeacherID" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_courses">
+      <EntityTypeMapping TypeName="IsTypeOf(schoolModel.View_courses)">
+        <MappingFragment StoreEntitySet="View_courses">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="fkCat" ColumnName="fkCat" />
+          <ScalarProperty Name="dis" ColumnName="dis" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="fkTeacherID" ColumnName="fkTeacherID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Family" ColumnName="Family" />
+          <ScalarProperty Name="catTitle" ColumnName="catTitle" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="alt" ColumnName="alt" />
+          <ScalarProperty Name="imgTitle" ColumnName="imgTitle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_teachers">
+      <EntityTypeMapping TypeName="IsTypeOf(schoolModel.View_teachers)">
+        <MappingFragment StoreEntitySet="View_teachers">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Family" ColumnName="Family" />
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="fkImg" ColumnName="fkImg" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="alt" ColumnName="alt" />
+          <ScalarProperty Name="title" ColumnName="title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Posts">
+      <EntityTypeMapping TypeName="IsTypeOf(schoolModel.tbl_Posts)">
+        <MappingFragment StoreEntitySet="tbl_Posts">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Dis" ColumnName="Dis" />
+          <ScalarProperty Name="Contents" ColumnName="Contents" />
+          <ScalarProperty Name="fkWriter" ColumnName="fkWriter" />
+          <ScalarProperty Name="DateOfWrite" ColumnName="DateOfWrite" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="ImageTitle" ColumnName="ImageTitle" />
+          <ScalarProperty Name="ImageAlt" ColumnName="ImageAlt" />
+          <ScalarProperty Name="KeyWords" ColumnName="KeyWords" />
+          <ScalarProperty Name="fkLangID" ColumnName="fkLangID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Banners">
+      <EntityTypeMapping TypeName="IsTypeOf(schoolModel.tbl_Banners)">
+        <MappingFragment StoreEntitySet="tbl_Banners">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Dis" ColumnName="Dis" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="ButtonCaption" ColumnName="ButtonCaption" />
+          <ScalarProperty Name="imgAlt" ColumnName="imgAlt" />
+          <ScalarProperty Name="imgTitle" ColumnName="imgTitle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_About">
+      <EntityTypeMapping TypeName="IsTypeOf(schoolModel.tbl_About)">
+        <MappingFragment StoreEntitySet="tbl_About">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="Items" ColumnName="Items" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="ImageAlt" ColumnName="ImageAlt" />
+          <ScalarProperty Name="ImageTitle" ColumnName="ImageTitle" />
+          <ScalarProperty Name="ButtonCaption" ColumnName="ButtonCaption" />
+          <ScalarProperty Name="ButtonUrl" ColumnName="ButtonUrl" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Dis" ColumnName="Dis" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_pages">
+      <EntityTypeMapping TypeName="IsTypeOf(schoolModel.tbl_pages)">
+        <MappingFragment StoreEntitySet="tbl_pages">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Dis" ColumnName="Dis" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="keyword" ColumnName="keyword" />
+          <ScalarProperty Name="Action" ColumnName="Action" />
+          <ScalarProperty Name="fkLangID" ColumnName="fkLangID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Languages">
+      <EntityTypeMapping TypeName="IsTypeOf(schoolModel.tbl_Languages)">
+        <MappingFragment StoreEntitySet="tbl_Languages">
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+          <ScalarProperty Name="Lang" ColumnName="Lang" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="direction" ColumnName="direction" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_blog">
+      <EntityTypeMapping TypeName="schoolModel.tbl_blog">
+        <MappingFragment StoreEntitySet="tbl_blog">
+          <ScalarProperty Name="fkLangID" ColumnName="fkLangID" />
+          <ScalarProperty Name="KeyWords" ColumnName="KeyWords" />
+          <ScalarProperty Name="ImageAlt" ColumnName="ImageAlt" />
+          <ScalarProperty Name="ImageTitle" ColumnName="ImageTitle" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="DateOfWrite" ColumnName="DateOfWrite" />
+          <ScalarProperty Name="fkWriter" ColumnName="fkWriter" />
+          <ScalarProperty Name="Contents" ColumnName="Contents" />
+          <ScalarProperty Name="Dis" ColumnName="Dis" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="pkID" ColumnName="pkID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

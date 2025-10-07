@@ -1,0 +1,28 @@
+﻿@using mentor.Models
+@model GeneralViewModel
+@{
+    ViewBag.Title = "blog";
+}
+
+
+<!-- Courses Course Details Section -->
+<section id="courses-course-details" class="courses-course-details section">
+
+    <div class="container" data-aos="fade-up">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <img src="~/adminAssets/img/imgsrc/@Model.post.Image" class="img-fluid" alt="">
+                <h3>@Model.post.Title</h3>
+                <span>
+                   @Html.Raw(@Model.post.Contents)
+                </span>
+            </div>
+           
+        </div>
+
+    </div>
+
+</section><!-- /Courses Course Details Section -->
+<!-- Tabs Section -->
+
