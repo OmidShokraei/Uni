@@ -174,16 +174,22 @@ cd Uni
 
 Below are some screenshots from the `mentor pics` folder showcasing different parts of the platform:
 
-| Description          | Screenshot                                      |
-| -------------------- | ----------------------------------------------- |
-| Mentor Dashboard     | ![Mentor Dashboard](mentor%20pics/1.png)   |
-| Student Management   | ![Student Management](mentor%20pics/2.png) |
-| Course Management    | ![Course Management](mentor%20pics/3.png)  |
-| Mentor Profile       | ![Mentor Profile](mentor%20pics/4.png)     |
-| Login Page           | ![Login Page](mentor%20pics/5.png)         |
-| Reports & Statistics | ![Reports](mentor%20pics/6.png)            |
+| Description | Screenshot |
+|-------------|------------|
+| Index | ![Index](mentor%20pics/1.png) |
+| About | ![About](mentor%20pics/2.png) |
+| Choose language | ![Choose language](mentor%20pics/3.png) |
+| Courses | ![Courses](mentor%20pics/4.png) |
+| Events | ![Events](mentor%20pics/5.png) |
+| Trainers | ![Trainers](mentor%20pics/6.png) |
+| Login | ![Login](mentor%20pics/7.png) |
+| Dashboard | ![Dashboard](mentor%20pics/8.png) |
+| Edit courses | ![Edit courses](mentor%20pics/9.png) |
+| Edit trainers | ![Edit trainers](mentor%20pics/10.png) |
+| Edit blog | ![Edit blog](mentor%20pics/11.png) |
+| Edit pages | ![Edit pages](mentor%20pics/12.png) |
+| Edit template | ![Edit template](mentor%20pics/13.png) |
 
-*(Update the file names according to your actual images.)*
 
 ---
 
