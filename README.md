@@ -176,12 +176,12 @@ Below are some screenshots from the `mentor pics` folder showcasing different pa
 
 | Description          | Screenshot                                      |
 | -------------------- | ----------------------------------------------- |
-| Mentor Dashboard     | ![Mentor Dashboard](mentor%20pics/image1.png)   |
-| Student Management   | ![Student Management](mentor%20pics/image2.png) |
-| Course Management    | ![Course Management](mentor%20pics/image3.png)  |
-| Mentor Profile       | ![Mentor Profile](mentor%20pics/image4.png)     |
-| Login Page           | ![Login Page](mentor%20pics/image5.png)         |
-| Reports & Statistics | ![Reports](mentor%20pics/image6.png)            |
+| Mentor Dashboard     | ![Mentor Dashboard](mentor%20pics/1.png)   |
+| Student Management   | ![Student Management](mentor%20pics/2.png) |
+| Course Management    | ![Course Management](mentor%20pics/3.png)  |
+| Mentor Profile       | ![Mentor Profile](mentor%20pics/4.png)     |
+| Login Page           | ![Login Page](mentor%20pics/5.png)         |
+| Reports & Statistics | ![Reports](mentor%20pics/6.png)            |
 
 *(Update the file names according to your actual images.)*
 
